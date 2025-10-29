@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const msg = "Hola Mundo";
 const hero = {
     name: "Ironman",
-    age: 45
+    age: 46
 };
 hero.age = 50;
 console.log(msg);
