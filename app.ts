@@ -1,32 +1,64 @@
-// Funciones Básicas
-function sumar( a:number, b:number ): number {
-  return a + b;
-}
 
-const contar = ( heroes: string[] ): number => {
-  return heroes.length;
-}
-const superHeroes: string[] = ["Flash", "Arrow", "Superman", "Linterna Verde"];
-contar(superHeroes);
+// Objetos
+(()=>{
+    const batimovil: {carroceria:string, modelo:string, antibalas:boolean, pasajeros:number } = {
+  carroceria: "Negra",
+  modelo: "6x6",
+  antibalas: true,
+  pasajeros:4
+};
 
-//Parametros por defecto
-const llamarBatman = ( llamar: boolean = true): void => {
-  if( llamar ){
-    console.log("Batiseñal activada");
+const bumblebee: {carroceria:string, modelo:string, antibalas:boolean, pasajeros:number, disparar?:()=>void } = {
+  carroceria: "Amarillo con negro",
+  modelo: "4x2",
+  antibalas: true,
+  pasajeros:4,
+  disparar(){ // El metodo disparar es opcional
+    console.log("Disparando");
   }
+};
+
+
+// Villanos debe de ser un arreglo de objetos personalizados
+const villanos:{nombre: string, edad: number, mutante:boolean}[] = [{
+  nombre:"Lex Luthor",
+  edad: 54,
+  mutante:false
+},{
+  nombre: "Erik Magnus Lehnsherr",
+  edad: 49,
+  mutante: true
+},{
+  nombre: "James Logan",
+  edad: undefined,
+  mutante: true
+}];
+
+// Multiples tipos
+// cree dos tipos, uno para charles y otro para apocalipsis
+
+type charlesType = {
+  poder: string,
+  estatura: number
+};
+type apocalipsisType = {
+  lider: boolean,
+  miembros: string[]
+};
+const charles:charlesType = {
+  poder:"psiquico",
+  estatura: 1.78
+};
+
+const apocalipsis:apocalipsisType = {
+  lider:true,
+  miembros: ["Magneto","Tormenta","Psylocke","Angel"]
 }
 
-llamarBatman();
+// Mystique, debe poder ser cualquiera de esos dos mutantes (charles o apocalipsis)
+let mystique:charlesType | apocalipsisType;
 
-// Rest?
-const unirheroes = ( ...personas: string[] ): string => {
-  return personas.join(", ");
-}
+mystique = charles;
+mystique = apocalipsis;
+})()
 
-
-// Tipo funcion
-const noHaceNada = ( numero:number, texto:string, booleano:boolean, arreglo:string[] )=> {}
-
-// Crear el tipo de funcion que acepte la funcion "noHaceNada"
-let noHaceNadaTampoco: ( numero:number, texto:string, booleano:boolean, arreglo:string[] ) => void;
-noHaceNadaTampoco = noHaceNada
